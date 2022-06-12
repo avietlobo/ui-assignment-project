@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         plugin = {"html:target/cucumber/cucumber.html"},
         glue = {"assignment"},
-        features = "src/test/resources/assignment/add_random_reaction.feature"
+        features = "src/test/resources/assignment/add_new_post.feature"
 )
 public class MyTestNGRunnerTest extends AbstractTestNGCucumberTests {
 

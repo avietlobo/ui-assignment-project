@@ -1,8 +1,8 @@
 package assignment.pages;
 
+import assignment.constants.Constants;
 import assignment.utils.NumberUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -85,13 +85,13 @@ public class InterviewChannelPage extends BasePage {
     public void navigateToInterviewChannel() throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(channelsBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(search)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(search)).sendKeys("Interview Channel");
+        wait.until(ExpectedConditions.elementToBeClickable(search)).sendKeys(Constants.INTERVIEW_CHANNEL);
         Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(channelItem)).click();
         Thread.sleep(5000);
     }
 
-    public void viewRandomPost() throws InterruptedException {
+    public void viewRandomPost()  {
         wait.until(ExpectedConditions.visibilityOf(postActionsMenu.get(0)));
         int index = NumberUtils.getRandomNumber();
         wait.until(ExpectedConditions.elementToBeClickable(postActionsMenu.get(index))).click();
@@ -105,11 +105,10 @@ public class InterviewChannelPage extends BasePage {
     }
 
     public void addRandomReaction() throws InterruptedException {
-        int reactionsCount = 5;
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'" + commentText + "')]"))));
         wait.until(ExpectedConditions.visibilityOf(likeBtn)).click();
         Thread.sleep(1000);
-        int index = NumberUtils.getRandomNumber(reactionsCount);
+        int index = NumberUtils.getRandomNumber(Constants.EMOJI_LIST_COUNT);
         Actions builder = new Actions(driver);
         builder.moveToElement(likeBtn).perform();
         Thread.sleep(3000);
@@ -120,7 +119,7 @@ public class InterviewChannelPage extends BasePage {
 
     }
 
-    public void editNewPost() throws InterruptedException {
+    public void editNewPost() {
         postId = Math.random();
         String postName = "New Post  " + postId;
         wait.until(ExpectedConditions.elementToBeClickable(editPostTxa)).click();
@@ -128,12 +127,11 @@ public class InterviewChannelPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(shareOptionsBtn)).click();
     }
 
-    public void publishAsAnnouncementExpiringWeekLater() throws InterruptedException {
-        String date = "13/06/2022";
+    public void publishAsAnnouncementExpiringWeekLater()  {
         wait.until(ExpectedConditions.elementToBeClickable(shareAsAnnouncementBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(shareAnnouncementList)).click();
         wait.until(ExpectedConditions.elementToBeClickable(item)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(datePicker)).sendKeys(date);
+        wait.until(ExpectedConditions.elementToBeClickable(datePicker)).sendKeys(Constants.ANNOUNCEMENT_EXPIRY_DATE);
         wait.until(ExpectedConditions.elementToBeClickable(shareBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(confirmBtn)).click();
     }

@@ -1,5 +1,6 @@
 package assignment.pages;
 
+import assignment.constants.Constants;
 import assignment.utils.EncryptionAndDecryption;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,11 +23,11 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void login() throws InterruptedException {
+    public void login()  {
         wait.until(ExpectedConditions.elementToBeClickable(signInBtn)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(emailTxt)).sendKeys("interview-qa-3@apps.fi");
+        wait.until(ExpectedConditions.elementToBeClickable(emailTxt)).sendKeys(Constants.USER_ID);
         wait.until(ExpectedConditions.elementToBeClickable(nextBtn)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(passwordTxt)).sendKeys(EncryptionAndDecryption.decrypt("PTh1U3kmVm0wMQ=="));
+        wait.until(ExpectedConditions.elementToBeClickable(passwordTxt)).sendKeys(EncryptionAndDecryption.decrypt(Constants.ENCRYPTED_PASSWORD));
         wait.until(ExpectedConditions.elementToBeClickable(next)).click();
     }
 
