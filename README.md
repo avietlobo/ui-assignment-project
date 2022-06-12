@@ -1,5 +1,5 @@
 # seleniumJava
-Selenium Startup Project for Java
+Selenium Startup Project for Java and it supports parallel execution using Test NG
 
 <img width="960" alt="framework" src="https://user-images.githubusercontent.com/35001674/173242942-4a528519-a633-4240-bae7-cc3a6d2fb4d5.png">
 
